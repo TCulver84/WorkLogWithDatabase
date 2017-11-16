@@ -3,13 +3,13 @@ import datetime
 
 from peewee import *  # space between third party libraries
 
-db = SqliteDatabase('work_log.db')
+db = SqliteDatabase('log.db')
 
 
 class Log(Model):
     """Instantiates and governs local instance of database"""
     timestamp = DateTimeField(default=datetime.datetime.now)
-    user_name = CharField(max_length=255, unique=True)
+    user_name = CharField(max_length=255)
     task_name = CharField(max_length=255)
     task_time = IntegerField(default=0)
     notes = TextField()

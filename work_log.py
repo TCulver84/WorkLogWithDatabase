@@ -108,9 +108,6 @@ class Entry():
                 except ValueError:
                     input("ValueError: Time must be INT!"
                         "Press ENTER to try again!")
-                except IntegrityError:
-                    input("IntegrityError: User Names must be UNIQUE!"
-                        "Press ENTER to try again!")
         return Main().menu_loop()
 
 
@@ -196,8 +193,9 @@ class Search():
         print("These Are the Availible Dates:")
         values = []
         for log in logs:
-            print(log.timestamp)
-            values.append(log.timestamp.strftime('%Y-%m-%d %H:%M:%S.%f'))
+            value = log.timestamp.strftime('%m/%d/%Y')
+            print(value)
+            values.append(value)
         timestamp = input('\nFind by Time Stamp (Copy From Above): ')
         if timestamp not in values:
             input("\nSorry! No values were returned for that search!,"
