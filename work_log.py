@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """by doing this you can execute the program with ./filename.py
  after running chmod +x filename.py"""
-
+import datetime
 from collections import OrderedDict
 
 from utilities import Utilities
@@ -203,7 +203,9 @@ class Search():
             values = []
             return Main().menu_loop()
         else:
-            return View().view_logs(timestamp, "date_search")
+            reformatted_timestamp = datetime.datetime.strptime(
+                timestamp, '%m/%d/%Y').strftime('%Y-%m-%d')
+            return View().view_logs(reformatted_timestamp, "date_search")
 
     def time_search(self):
         """Search Logs by Task Time"""
